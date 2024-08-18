@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  TheMovieApp
+//  MoviesDemo
 //
-//  Created by Virginia Lombardi on 17/8/24.
+//  Created by Marco Alonso Rodriguez on 18/01/24.
 //
 
 import SwiftUI
