@@ -15,7 +15,6 @@
 		138881A92C71A7EB002AC106 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881A82C71A7EB002AC106 /* SplashScreenView.swift */; };
 		138881B22C724AA7002AC106 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 138881B12C724AA7002AC106 /* YouTubeiOSPlayerHelper */; };
 		138881B52C724AD2002AC106 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 138881B42C724AD2002AC106 /* Kingfisher */; };
-		138881B72C7254F8002AC106 /* CarouselMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881B62C7254F8002AC106 /* CarouselMoviesView.swift */; };
 		138881B92C72680E002AC106 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881B82C72680E002AC106 /* Constants.swift */; };
 		138881BB2C728434002AC106 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881BA2C728434002AC106 /* FavoriteManager.swift */; };
 		138881BD2C7284F6002AC106 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881BC2C7284F6002AC106 /* FavoriteModel.swift */; };
@@ -61,7 +60,6 @@
 		138881A32C71A31A002AC106 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = TheMovieApp/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		138881A62C71A376002AC106 /* TheMovieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieApp.swift; sourceTree = "<group>"; };
 		138881A82C71A7EB002AC106 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		138881B62C7254F8002AC106 /* CarouselMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselMoviesView.swift; sourceTree = "<group>"; };
 		138881B82C72680E002AC106 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		138881BA2C728434002AC106 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		138881BC2C7284F6002AC106 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				1388819D2C71A0EA002AC106 /* MainTabView.swift */,
 				1388819F2C71A111002AC106 /* SearchMovieView.swift */,
 				138881A82C71A7EB002AC106 /* SplashScreenView.swift */,
-				138881B62C7254F8002AC106 /* CarouselMoviesView.swift */,
 				138881BE2C7285F4002AC106 /* FavoriteView.swift */,
 			);
 			path = View;
@@ -378,7 +375,6 @@
 				13FF4C3D2C719B72001ABF70 /* TrailerViewModel.swift in Sources */,
 				1388819E2C71A0EA002AC106 /* MainTabView.swift in Sources */,
 				138881BD2C7284F6002AC106 /* FavoriteModel.swift in Sources */,
-				138881B72C7254F8002AC106 /* CarouselMoviesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

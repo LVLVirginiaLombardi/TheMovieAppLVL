@@ -19,32 +19,51 @@ struct MovieDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                if !viewModel.listOfTrailers.isEmpty {
-                    YTWrapper(videoID: "\(viewModel.listOfTrailers[0].key)")
-                        .frame(height: 200)
-                        .cornerRadius(12)
-                        .padding(.horizontal, 15)
+                ZStack(alignment: .bottomLeading) {
+                    if viewModel.listOfTrailers.isEmpty {
+                        RemoteImageMovie(url: movie.backdrop_path ?? "")
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width - 32, height: 250)
+                            .cornerRadius(16)
+                            .padding(.horizontal, 16)
+                            .shadow(radius: 12)
+                    } else {
+                        YTWrapper(videoID: "\(viewModel.listOfTrailers[0].key)")
+                            .frame(height: 250)
+                            .cornerRadius(16)
+                            .padding(.horizontal, 16)
+                        
+                        RemoteImageMovie(url: movie.backdrop_path ?? "")
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 140)
+                            .cornerRadius(8)
+                            .offset(x: 10, y: 50)
+                            .shadow(radius: 5)
+                    }
                 }
+                
                 Text(movie.title ?? movie.original_title ?? "")
                     .font(.title3)
                     .bold()
-                    .foregroundColor(.red)
-                    .padding(.horizontal, 15)
+                    .foregroundColor(.indigo)
+                    .padding(.leading)
                 
                 Text(movie.overview ?? "")
                     .font(.body)
-                    .padding(.horizontal, 15)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 16)
                 
                 HStack {
                     Text("Estreno \(movie.release_date ?? "")")
-                        .font(.title3)
+                        .font(.body)
                     
                     Button(action: {
-                        //Agregar favoritos
+                        // Agregar a favoritos
                     }, label: {
                         Image(systemName: "heart")
                     })
                 }
+                .padding(.horizontal, 16)
                 
                 ScrollView {
                     ForEach(viewModel.listOfTrailers, id: \.key) { trailer in
@@ -57,17 +76,10 @@ struct MovieDetailView: View {
                 }
                 .frame(height: 300)
                 
-                RemoteImageMovie(url: movie.backdrop_path ?? "")
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 200)
-                    .shadow(radius: 12)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 15)
-                
-                    .navigationBarItems(trailing: Button(action: {
-                    }, label: {
-                        Image(systemName: "square.and.row.up.fill")
-                    }))
+                .navigationBarItems(trailing: Button(action: {
+                }, label: {
+                    Image(systemName: "square.and.arrow.up.fill")
+                }))
             }
             .sheet(isPresented: $showTrailer, content: {
                 EmptyView()
@@ -80,8 +92,8 @@ struct MovieDetailView: View {
     }
 }
 
-struct YTWrapper : UIViewRepresentable {
-    var videoID : String
+struct YTWrapper: UIViewRepresentable {
+    var videoID: String
     
     func makeUIView(context: Context) -> YTPlayerView {
         let playerView = YTPlayerView()
@@ -93,99 +105,7 @@ struct YTWrapper : UIViewRepresentable {
     }
 }
 
-//import SwiftUI
-//import Kingfisher
-//import YouTubeiOSPlayerHelper
-//
-//struct MovieDetailView: View {
-//    @StateObject var viewModel = TrailerViewModel()
-//    @State private var urlSelected = ""
-//    @State private var showTrailer = false
-//    @State private var isFavorite = false
-//    
-//    let movie: DataMovie
-//    
-//    var body: some View {
-//        ScrollView {
-//            VStack(spacing: 20) {
-//                if !viewModel.listOfTrailers.isEmpty {
-//                    YTWrapper(videoID: "\(viewModel.listOfTrailers[0].key)")
-//                        .frame(height: 200)
-//                        .cornerRadius(12)
-//                        .padding(.horizontal, 15)
-//                }
-//                Text(movie.title ?? movie.original_title ?? "")
-//                    .font(.title3)
-//                    .bold()
-//                    .foregroundColor(.red)
-//                    .padding(.horizontal, 15)
-//                
-//                Text(movie.overview ?? "")
-//                    .font(.body)
-//                    .padding(.horizontal, 15)
-//                
-//                HStack {
-//                    Text("Estreno \(movie.release_date ?? "")")
-//                        .font(.title3)
-//                    
-//                    Button(action: {
-//                        if isFavorite {
-//                            FavoriteManager.shared.deleteFavorite(movie: movie)
-//                        } else {
-//                            FavoriteManager.shared.saveFavorite(movie: movie)
-//                        }
-//                        isFavorite.toggle()
-//                    }) {
-//                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-//                            .foregroundColor(isFavorite ? .red : .gray)
-//                            .font(.largeTitle)
-//                    }
-//                }
-//                
-//                ScrollView {
-//                    ForEach(viewModel.listOfTrailers, id: \.key) { trailer in
-//                        TrailerCellView(urlMovie: movie.backdrop_path ?? "", trailer: trailer)
-//                            .onTapGesture {
-//                                self.urlSelected = trailer.key
-//                                showTrailer = true
-//                            }
-//                    }
-//                }
-//                .frame(height: 300)
-//                
-//                RemoteImageMovie(url: movie.backdrop_path ?? "")
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(height: 200)
-//                    .shadow(radius: 12)
-//                    .cornerRadius(12)
-//                    .padding(.horizontal, 15)
-//                
-//                    .navigationBarItems(trailing: Button(action: {
-//                    }, label: {
-//                        Image(systemName: "square.and.row.up.fill")
-//                    }))
-//            }
-//            .sheet(isPresented: $showTrailer, content: {
-//                EmptyView()
-//            })
-//            .onAppear(perform: {
-//                viewModel.getTrailers(id: movie.id ?? 123)
-//                isFavorite = FavoriteManager.shared.fetchFavorites().contains { $0.id == movie.id ?? 0 }
-//            })
-//            .padding(5)
-//        }
-//    }
-//}
-//
-//struct YTWrapper : UIViewRepresentable {
-//    var videoID : String
-//    
-//    func makeUIView(context: Context) -> YTPlayerView {
-//        let playerView = YTPlayerView()
-//        playerView.load(withVideoId: videoID)
-//        return playerView
-//    }
-//    
-//    func updateUIView(_ uiView: YTPlayerView, context: Context) {
-//    }
-//}
+#Preview {
+    MovieDetailView(movie: MockData.movie)
+}
+

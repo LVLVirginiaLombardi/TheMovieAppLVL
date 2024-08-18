@@ -5,6 +5,7 @@
 //  Created by Virginia Lombardi on 18/8/24.
 //
 
+
 import SwiftUI
 import Kingfisher
 
@@ -12,44 +13,48 @@ struct SearchMoviesView: View {
     @State private var nameOfMovie = ""
     @StateObject var viewModel = SearchMoviesViewModel()
     
-    private let fixedColums = [
-        GridItem(.fixed(150)),
-        GridItem(.fixed(150))
-    ]
-    
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    ScrollView {
-                        LazyVGrid(columns: fixedColums, spacing: 20) {
-                            ForEach(viewModel.moviesFounded, id: \.id) { movie in
-                                NavigationLink {
-                                    MovieDetailView(movie: movie)
-                                } label: {
-                                    VStack {
-                                        KFImage(URL(string: "\(Constants.urlImages)\(movie.poster_path ?? "")"))
-                                            .resizable()
-                                            .placeholder { progress in
-                                                ProgressView()
-                                            }
-                                            .cornerRadius(16)
-                                    }
-                                    .frame(width: 150, height: 200)
-                                }
-                            }
-                        }
-                    }
-                    .padding(20)
-                }
-                .navigationTitle("Search Movies")
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
-                .searchable(text: $nameOfMovie, prompt: "Search")
-                .onChange(of: nameOfMovie) { oldValue, newValue in
-                    viewModel.searchMovie(name: newValue)
+            List(viewModel.moviesFounded, id: \.id) { movie in
+                NavigationLink(destination: MovieDetailView(movie: movie)) {
+                    MovieRow(movie: movie)
                 }
             }
+            .navigationTitle("Search Movies")
+            .searchable(text: $nameOfMovie, prompt: "Search")
+            .onChange(of: nameOfMovie) { newValue in
+                viewModel.searchMovie(name: newValue)
+            }
+        }
+    }
+}
+
+struct MovieRow: View {
+    let movie: DataMovie
+
+    var body: some View {
+        HStack {
+            KFImage(URL(string: "\(Constants.urlImages)\(movie.poster_path ?? "")"))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 150)
+                .cornerRadius(12)
+                .clipped()
+            
+            VStack(alignment: .leading) {
+                Text(movie.title ?? "Unknown Title")
+                    .font(.caption)
+                    .padding(.bottom, 2)
+                
+                Text("Release Date: \(movie.release_date ?? "Unknown")")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                
+                Text("Language: \(movie.original_language ?? "")")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding(.leading, 10)
         }
     }
 }
@@ -57,4 +62,3 @@ struct SearchMoviesView: View {
 #Preview {
     SearchMoviesView()
 }
-
