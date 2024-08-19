@@ -24,11 +24,18 @@ struct MoviesView: View {
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
-                        Spacer()
-                        Text("What do you want to watch?")
-                            .font(.title2)
-                            .foregroundColor(.black)
+                        Spacer(minLength: 20)
+                        HStack(spacing: 20) {
+                            Image(systemName: "popcorn.circle")
+                                .foregroundColor(.indigo)
+                                .font(.title)
+                            Text("What do you want to watch?")
+                                .font(.title2)
+                                .foregroundColor(.indigo)
 
+                        }
+                        .padding(.bottom, 60)
+                        
                         VStack(alignment: .leading) {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 15) {

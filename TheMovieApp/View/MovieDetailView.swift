@@ -32,9 +32,9 @@ struct MovieDetailView: View {
                         YTWrapper(videoID: "\(viewModel.listOfTrailers[0].key)")
                             .frame(height: 250)
                             .cornerRadius(16)
-                            .padding(.horizontal, 16)
+                            .padding(.top, 40)
                         
-                        RemoteImageMovie(url: movie.backdrop_path ?? "")
+                        RemoteImageMovie(url: movie.backdrop_path ?? "placeholder")
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100, height: 140)
                             .cornerRadius(8)
@@ -42,21 +42,23 @@ struct MovieDetailView: View {
                             .shadow(radius: 5)
                     }
                 }
-                
-                Text(movie.title ?? movie.original_title ?? "")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.indigo)
-                    .padding(.leading)
-                
-                Text(movie.overview ?? "")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 16)
-                
+                HStack(alignment: .top, spacing: 16) {
+                    Spacer()
+                        .frame(width: 80)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(movie.title ?? movie.original_title ?? "placeholder")
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.indigo)
+                            .padding(.horizontal, 16)
+                    }
+                }
                 HStack {
-                    Text("Estreno \(movie.release_date ?? "")")
+                    Image(systemName: "calendar")
+                        .foregroundColor(.gray)
+                    Text(viewModel.getYear(from: movie.release_date ?? ""))
                         .font(.body)
+                        .foregroundColor(.gray)
                     
                     Button(action: {
                         toggleFavorite()
@@ -65,7 +67,11 @@ struct MovieDetailView: View {
                             .foregroundColor(isFavorite ? .red : .gray)
                     })
                 }
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 8)
+                Text(movie.overview ?? "")
+                    .font(.body)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 16)
                 
                 ScrollView {
                     ForEach(viewModel.listOfTrailers, id: \.key) { trailer in
@@ -103,6 +109,7 @@ struct MovieDetailView: View {
         isFavorite.toggle()
     }
 }
+
 struct YTWrapper: UIViewRepresentable {
     var videoID: String
 

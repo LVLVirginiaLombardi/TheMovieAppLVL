@@ -26,4 +26,15 @@ class TrailerViewModel: ObservableObject {
             }
         }
     }
+    
+    func getYear(from date: String) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: date) {
+                let yearFormatter = DateFormatter()
+                yearFormatter.dateFormat = "yyyy"
+                return yearFormatter.string(from: date)
+            }
+            return ""
+        }
 }
