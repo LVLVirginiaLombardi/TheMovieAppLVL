@@ -36,9 +36,9 @@ struct MovieRow: View {
         HStack {
             KFImage(URL(string: "\(Constants.urlImages)\(movie.poster_path ?? "")"))
                 .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 12))
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 100, height: 150)
-                .cornerRadius(12)
                 .clipped()
             
             VStack(alignment: .leading) {
@@ -56,6 +56,7 @@ struct MovieRow: View {
             }
             .padding(.leading, 10)
         }
+        
     }
 }
 

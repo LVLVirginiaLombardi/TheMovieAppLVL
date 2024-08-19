@@ -166,39 +166,39 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
-//    func getMoviesTrending(completed: @escaping (Result<[DataMovie], APError>) -> Void) {
-//        guard let url = URL(string: "\(NetworkManager.trending)&language=en-US") else {
-//            completed(.failure(.invalidURL))
-//            return
-//        }
-//        
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let _ = error {
-//                completed(.failure(.unableToComplete))
-//                return
-//            }
-//            
-//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                completed(.failure(.invalidResponse))
-//                return
-//            }
-//            
-//            guard let data = data else {
-//                completed(.failure(.invalidData))
-//                return
-//            }
-//            
-//            do {
-//                let decoder = JSONDecoder()
-//                let decodedResponse = try decoder.decode(MovieDataModel.self, from: data)
-//                completed(.success(decodedResponse.results))
-//            } catch {
-//                print("Debug: decoding error \(error.localizedDescription)")
-//                completed(.failure(.decodingError))
-//            }
-//        }
-//        task.resume()
-//    }
+    func getMoviesTrending(completed: @escaping (Result<[DataMovie], APError>) -> Void) {
+        guard let url = URL(string: "\(NetworkManager.trending)&language=en-US") else {
+            completed(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedResponse = try decoder.decode(MovieDataModel.self, from: data)
+                completed(.success(decodedResponse.results))
+            } catch {
+                print("Debug: decoding error \(error.localizedDescription)")
+                completed(.failure(.decodingError))
+            }
+        }
+        task.resume()
+    }
     
     func getListOfTrailers(id: Int, completed: @escaping (Result<[Trailer], APError>) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=\(NetworkManager.apiKey)") else {
