@@ -5,7 +5,6 @@
 //  Created by Virginia Lombardi on 18/8/24.
 //
 
-
 import SwiftUI
 import Kingfisher
 
@@ -15,9 +14,27 @@ struct SearchMoviesView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.moviesFounded, id: \.id) { movie in
-                NavigationLink(destination: MovieDetailView(movie: movie)) {
-                    MovieRow(movie: movie)
+            VStack {
+                if viewModel.moviesFounded.isEmpty {
+                    VStack {
+                        Image("emptySearch")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .foregroundColor(.gray)
+                            .padding(.bottom, 20)
+                        
+                        Text("We are sorry, we can not \nfind the movie :(")
+                            .font(.title2)
+                            .foregroundColor(.gray)
+                    }
+                    .padding()
+                } else {
+                    List(viewModel.moviesFounded, id: \.id) { movie in
+                        NavigationLink(destination: MovieDetailView(movie: movie)) {
+                            MovieRow(movie: movie)
+                        }
+                    }
                 }
             }
             .navigationTitle("Search Movies")
@@ -56,7 +73,6 @@ struct MovieRow: View {
             }
             .padding(.leading, 10)
         }
-        
     }
 }
 
