@@ -24,41 +24,10 @@ struct MoviesView: View {
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
-                        Spacer(minLength: 20)
-                        HStack(spacing: 20) {
-                            Image(systemName: "popcorn.circle")
-                                .foregroundColor(.indigo)
-                                .font(.title)
-                            Text("What do you want to watch?")
-                                .font(.title2)
-                                .foregroundColor(.indigo)
-
-                        }
-                        .padding(.bottom, 60)
+                        HeaderView()
+                            .padding(.top, 20)
                         
-                        VStack(alignment: .leading) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForEach(viewModel.popularMovies.prefix(10), id: \.id) { movie in
-                                        NavigationLink {
-                                            MovieDetailView(movie: movie)
-                                        } label: {
-                                            KFImage(URL(string: "\(Constants.urlImages)\(movie.poster_path ?? Constants.placeholder)"))
-                                                .resizable()
-                                                .placeholder { progress in
-                                                    ProgressView()
-                                                }
-                                                .cornerRadius(12)
-                                                .frame(width: 250, height: 335)
-                                                .shadow(radius: 3)
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                        .padding(.bottom, 20)
-                        
+                        PopularMoviesSection()
                         HStack(spacing: 20) {
                             Button(action: {
                                 withAnimation {
@@ -154,7 +123,6 @@ struct MoviesView: View {
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
                 }
             }
         }
