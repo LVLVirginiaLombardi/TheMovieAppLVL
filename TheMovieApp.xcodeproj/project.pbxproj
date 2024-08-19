@@ -14,13 +14,17 @@
 		138881A72C71A376002AC106 /* TheMovieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881A62C71A376002AC106 /* TheMovieApp.swift */; };
 		138881A92C71A7EB002AC106 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881A82C71A7EB002AC106 /* SplashScreenView.swift */; };
 		138881B22C724AA7002AC106 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 138881B12C724AA7002AC106 /* YouTubeiOSPlayerHelper */; };
-		138881B52C724AD2002AC106 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 138881B42C724AD2002AC106 /* Kingfisher */; };
-		138881B72C7254F8002AC106 /* CarouselMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881B62C7254F8002AC106 /* CarouselMoviesView.swift */; };
 		138881B92C72680E002AC106 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881B82C72680E002AC106 /* Constants.swift */; };
 		138881BB2C728434002AC106 /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881BA2C728434002AC106 /* FavoriteManager.swift */; };
 		138881BD2C7284F6002AC106 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881BC2C7284F6002AC106 /* FavoriteModel.swift */; };
 		138881BF2C7285F4002AC106 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881BE2C7285F4002AC106 /* FavoriteView.swift */; };
 		138881C12C728640002AC106 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881C02C728640002AC106 /* FavoritesViewModel.swift */; };
+		138881D12C72B685002AC106 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 138881D02C72B685002AC106 /* Kingfisher */; };
+		138881D42C72BCDA002AC106 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881D32C72BCDA002AC106 /* PersistenceController.swift */; };
+		138881D62C72C230002AC106 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881D52C72C230002AC106 /* MovieService.swift */; };
+		138881D82C7337CA002AC106 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881D72C7337CA002AC106 /* HeaderView.swift */; };
+		138881DA2C73393F002AC106 /* PopularMoviesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881D92C73393F002AC106 /* PopularMoviesSection.swift */; };
+		138881DE2C736220002AC106 /* TrendingMoviesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138881DD2C736220002AC106 /* TrendingMoviesSection.swift */; };
 		13FF4C032C7197D1001ABF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13FF4C022C7197D1001ABF70 /* Assets.xcassets */; };
 		13FF4C062C7197D1001ABF70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13FF4C052C7197D1001ABF70 /* Preview Assets.xcassets */; };
 		13FF4C102C7197D1001ABF70 /* TheMovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FF4C0F2C7197D1001ABF70 /* TheMovieAppTests.swift */; };
@@ -61,12 +65,16 @@
 		138881A32C71A31A002AC106 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = TheMovieApp/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		138881A62C71A376002AC106 /* TheMovieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieApp.swift; sourceTree = "<group>"; };
 		138881A82C71A7EB002AC106 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		138881B62C7254F8002AC106 /* CarouselMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselMoviesView.swift; sourceTree = "<group>"; };
 		138881B82C72680E002AC106 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		138881BA2C728434002AC106 /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		138881BC2C7284F6002AC106 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		138881BE2C7285F4002AC106 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		138881C02C728640002AC106 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		138881D32C72BCDA002AC106 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		138881D52C72C230002AC106 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		138881D72C7337CA002AC106 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		138881D92C73393F002AC106 /* PopularMoviesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesSection.swift; sourceTree = "<group>"; };
+		138881DD2C736220002AC106 /* TrendingMoviesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMoviesSection.swift; sourceTree = "<group>"; };
 		13FF4BFB2C7197D0001ABF70 /* TheMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13FF4C022C7197D1001ABF70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13FF4C052C7197D1001ABF70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -91,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				138881B52C724AD2002AC106 /* Kingfisher in Frameworks */,
+				138881D12C72B685002AC106 /* Kingfisher in Frameworks */,
 				138881B22C724AA7002AC106 /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		138881D22C72BCCC002AC106 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				138881D32C72BCDA002AC106 /* PersistenceController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		13FF4BF22C7197D0001ABF70 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +152,7 @@
 		13FF4BFD2C7197D0001ABF70 /* TheMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				138881D22C72BCCC002AC106 /* Controller */,
 				138881A32C71A31A002AC106 /* ContentView.swift */,
 				13FF4C2F2C71987B001ABF70 /* ViewModel */,
 				13FF4C2C2C71983B001ABF70 /* View */,
@@ -179,6 +196,7 @@
 			children = (
 				13FF4C292C719813001ABF70 /* NetworkManager.swift */,
 				138881BA2C728434002AC106 /* FavoriteManager.swift */,
+				138881D52C72C230002AC106 /* MovieService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -203,8 +221,10 @@
 				1388819D2C71A0EA002AC106 /* MainTabView.swift */,
 				1388819F2C71A111002AC106 /* SearchMovieView.swift */,
 				138881A82C71A7EB002AC106 /* SplashScreenView.swift */,
-				138881B62C7254F8002AC106 /* CarouselMoviesView.swift */,
 				138881BE2C7285F4002AC106 /* FavoriteView.swift */,
+				138881D72C7337CA002AC106 /* HeaderView.swift */,
+				138881D92C73393F002AC106 /* PopularMoviesSection.swift */,
+				138881DD2C736220002AC106 /* TrendingMoviesSection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,7 +258,7 @@
 			name = TheMovieApp;
 			packageProductDependencies = (
 				138881B12C724AA7002AC106 /* YouTubeiOSPlayerHelper */,
-				138881B42C724AD2002AC106 /* Kingfisher */,
+				138881D02C72B685002AC106 /* Kingfisher */,
 			);
 			productName = TheMovieApp;
 			productReference = 13FF4BFB2C7197D0001ABF70 /* TheMovieApp.app */;
@@ -314,7 +334,7 @@
 			mainGroup = 13FF4BF22C7197D0001ABF70;
 			packageReferences = (
 				138881B02C724AA7002AC106 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
-				138881B32C724AD1002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				138881CF2C72B685002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 13FF4BFC2C7197D0001ABF70 /* Products */;
 			projectDirPath = "";
@@ -368,17 +388,21 @@
 				138881A02C71A111002AC106 /* SearchMovieView.swift in Sources */,
 				138881BF2C7285F4002AC106 /* FavoriteView.swift in Sources */,
 				13FF4C432C719D3F001ABF70 /* TrailerCellView.swift in Sources */,
+				138881D62C72C230002AC106 /* MovieService.swift in Sources */,
 				13FF4C2A2C719813001ABF70 /* NetworkManager.swift in Sources */,
 				138881A22C71A138002AC106 /* SearchMoviesViewModel.swift in Sources */,
 				138881A72C71A376002AC106 /* TheMovieApp.swift in Sources */,
 				13FF4C312C719894001ABF70 /* MovieViewModel.swift in Sources */,
 				13FF4C2E2C719855001ABF70 /* MovieDataModel.swift in Sources */,
+				138881DA2C73393F002AC106 /* PopularMoviesSection.swift in Sources */,
+				138881D42C72BCDA002AC106 /* PersistenceController.swift in Sources */,
 				138881C12C728640002AC106 /* FavoritesViewModel.swift in Sources */,
 				138881A52C71A320002AC106 /* ContentView.swift in Sources */,
 				13FF4C3D2C719B72001ABF70 /* TrailerViewModel.swift in Sources */,
 				1388819E2C71A0EA002AC106 /* MainTabView.swift in Sources */,
+				138881D82C7337CA002AC106 /* HeaderView.swift in Sources */,
+				138881DE2C736220002AC106 /* TrendingMoviesSection.swift in Sources */,
 				138881BD2C7284F6002AC106 /* FavoriteModel.swift in Sources */,
-				138881B72C7254F8002AC106 /* CarouselMoviesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,7 +736,7 @@
 				minimumVersion = 1.0.4;
 			};
 		};
-		138881B32C724AD1002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		138881CF2C72B685002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -728,9 +752,9 @@
 			package = 138881B02C724AA7002AC106 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
 		};
-		138881B42C724AD2002AC106 /* Kingfisher */ = {
+		138881D02C72B685002AC106 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 138881B32C724AD1002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 138881CF2C72B685002AC106 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

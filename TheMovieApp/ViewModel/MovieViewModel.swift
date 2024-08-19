@@ -32,6 +32,7 @@ class MovieViewModel: ObservableObject {
         getListOfUpcomingMovies()
         getMoviesNowPlaying()
         getMoviesRated()
+        getMoviesTrending()
     }
     
     func getPopularMovies() {
@@ -97,23 +98,21 @@ class MovieViewModel: ObservableObject {
             }
         }
     }
+    
+    func getMoviesTrending() {
+        NetworkManager.shared.getMoviesTrending { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let movies):
+                    self.trendingMovies = movies
+                case .failure(let error):
+                    print("Error fetching trending movies: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 
-    
-//    func getMoviesTrending() {
-//        NetworkManager.shared.getMoviesTrending { [weak self] result in
-//            DispatchQueue.main.async {
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let movies):
-//                    self.trendingMovies = movies
-//                    
-//                case .failure(let error):
-//                    print("Error fetching trending movies: \(error.localizedDescription)")
-//                }
-//            }
-//        }
-//    }
-    
     @MainActor
     func fetchNextSetOfMovies() async {
         guard page != totalPages else { return }

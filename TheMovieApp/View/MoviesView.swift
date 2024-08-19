@@ -12,88 +12,68 @@ struct MoviesView: View {
     
     @StateObject private var viewModel = MovieViewModel()
     
-    @State private var showUpcoming = false
-    @State private var showNowPlaying = false
-    @State private var showTrendings = false
-    @State private var showRated = false
+    @State private var selectedSection: MovieSection = .upcoming
+    
+    enum MovieSection {
+        case upcoming, nowPlaying, trendings, rated
+    }
     
     var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
             ZStack {
+                Color("background")
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 20) {
-                        Spacer()
-                        Text("What do you want to watch?")
-                            .font(.title2)
-                            .foregroundColor(.black)
-
-                        VStack(alignment: .leading) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForEach(viewModel.popularMovies.prefix(10), id: \.id) { movie in
-                                        NavigationLink {
-                                            MovieDetailView(movie: movie)
-                                        } label: {
-                                            KFImage(URL(string: "\(Constants.urlImages)\(movie.poster_path ?? Constants.placeholder)"))
-                                                .resizable()
-                                                .placeholder { progress in
-                                                    ProgressView()
-                                                }
-                                                .cornerRadius(12)
-                                                .frame(width: 250, height: 335)
-                                                .shadow(radius: 3)
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                        .padding(.bottom, 20)
+                        HeaderView()
+                            .padding(.top, 20)
                         
-                        HStack(spacing: 20) {
+                        PopularMoviesSection()
+                        
+                        HStack(spacing: 30) {
                             Button(action: {
                                 withAnimation {
-                                    showUpcoming.toggle()
+                                    selectedSection = .upcoming
                                 }
                             }) {
                                 Text("Upcoming")
-                                    .font(.caption)
-                                    .foregroundColor(showUpcoming ? .blue : .black)
+                                    .font(.body)
+                                    .foregroundColor(selectedSection == .upcoming ? .blue : .white)
                                     .padding()
-                                    .background(showUpcoming ? Color.gray.opacity(0.2) : Color.clear)
+                                    .background(selectedSection == .upcoming ? Color.gray.opacity(0.2) : Color.clear)
                                     .cornerRadius(10)
                             }
                             
                             Button(action: {
                                 withAnimation {
-                                    showNowPlaying.toggle()
+                                    selectedSection = .nowPlaying
                                 }
                             }) {
                                 Text("Now Playing")
-                                    .font(.caption)
-                                    .foregroundColor(showNowPlaying ? .blue : .black)
+                                    .font(.body)
+                                    .foregroundColor(selectedSection == .nowPlaying ? .blue : .white)
                                     .padding()
-                                    .background(showNowPlaying ? Color.gray.opacity(0.2) : Color.clear)
+                                    .background(selectedSection == .nowPlaying ? Color.gray.opacity(0.2) : Color.clear)
                                     .cornerRadius(10)
                             }
                             
                             Button(action: {
                                 withAnimation {
-                                    showRated.toggle()
+                                    selectedSection = .rated
                                 }
                             }) {
                                 Text("Top Rated")
-                                    .font(.caption)
-                                    .foregroundColor(showRated ? .blue : .black)
+                                    .font(.body)
+                                    .foregroundColor(selectedSection == .rated ? .blue : .white)
                                     .padding()
-                                    .background(showRated    ? Color.gray.opacity(0.2) : Color.clear)
+                                    .background(selectedSection == .rated ? Color.gray.opacity(0.2) : Color.clear)
                                     .cornerRadius(10)
                             }
                         }
                         
-                        if showUpcoming {
+                        if selectedSection == .upcoming {
                             LazyVGrid(columns: gridItemLayout, spacing: 20) {
                                 ForEach(viewModel.upcomingMovies.prefix(6), id: \.id) { movie in
                                     NavigationLink {
@@ -111,7 +91,7 @@ struct MoviesView: View {
                             }
                         }
                         
-                        if showNowPlaying {
+                        if selectedSection == .nowPlaying {
                             LazyVGrid(columns: gridItemLayout, spacing: 20) {
                                 ForEach(viewModel.nowPlayingMovies.prefix(6), id: \.id) { movie in
                                     NavigationLink {
@@ -129,7 +109,7 @@ struct MoviesView: View {
                             }
                         }
                         
-                        if showRated {
+                        if selectedSection == .rated {
                             LazyVGrid(columns: gridItemLayout, spacing: 20) {
                                 ForEach(viewModel.ratedMovies.prefix(6), id: \.id) { movie in
                                     NavigationLink {
@@ -146,8 +126,12 @@ struct MoviesView: View {
                                 }
                             }
                         }
+                        Text("Trending Movies")
+                            .padding(.top, 20)
+                            .font(.title2)
+                            .foregroundColor(.white)
+                        TrendingMoviesSection()
                     }
-                    .padding(.horizontal, 20)
                 }
             }
         }
@@ -157,3 +141,5 @@ struct MoviesView: View {
 #Preview {
     MoviesView()
 }
+
+

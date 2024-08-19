@@ -13,7 +13,7 @@ struct MovieDataModel: Codable {
     let total_pages: Int
 }
 
-struct DataMovie: Codable {
+struct DataMovie: Codable, Identifiable {
     let backdrop_path: String?
     let id: Int?
     let original_title: String?
@@ -25,7 +25,7 @@ struct DataMovie: Codable {
 }
 
 struct MockData {
-    static let movie = DataMovie(backdrop_path: "/vQ5T84t8h4N2xAswNFW9fkVIyZq.jpg", id: 536437, original_title: "Hypnotic", overview: "Un detective se ve envuelto en un misterio en el que está involucrada su hija desaparecida y un programa secreto del gobierno mientras investiga una serie de atracos de alto nivel.", original_language: "en", title: nil, release_date: "2023-05-11", poster_path: "/3IhGkkalwXguTlceGSl8XUJZOVI.jpg")
+    static let movie = DataMovie(backdrop_path: "/vQ5T84t8h4N2xAswNFW9fkVIyZq.jpg", id: 536437, original_title: "Hypnotic Hypnotic Hypnotic Hypnotic Hypnotic Hypnotic Hypnotic Hypnotic", overview: "Un detective se ve envuelto en un misterio en el que está involucrada su hija desaparecida y un programa secreto del gobierno mientras investiga una serie de atracos de alto nivel.", original_language: "en", title: nil, release_date: "2023-05-11", poster_path: "/3IhGkkalwXguTlceGSl8XUJZOVI.jpg")
     static let idTrailer = "uI5rezDfDqI"
 }
 
