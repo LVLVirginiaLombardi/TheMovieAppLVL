@@ -15,7 +15,7 @@ struct FavoritesView: View {
     var body: some View {
         VStack {
             if viewModel.favoriteMovies.isEmpty {
-                Image("emptyFavorite")
+                Image("favoritesEmpty")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
