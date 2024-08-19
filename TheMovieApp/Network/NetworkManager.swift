@@ -18,7 +18,6 @@ enum APError: Error {
 
 class NetworkManager: NSObject {
     static let shared = NetworkManager()
-    private let cache = NSCache<NSString, UIImage>()
     
     static let apiKey = "d3dbf6a8b8b0fb451dfc42b75109a398"
     
@@ -28,45 +27,6 @@ class NetworkManager: NSObject {
     static let popular = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
     static let topRated = "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)"
     
-    
-//    func saveImage(_ image: UIImage, withName name: String) {
-//        guard let data = image.pngData() else { return }
-//        let filename = getDocumentsDirectory().appendingPathComponent(name)
-//        try? data.write(to: filename)
-//    }
-//
-//    func loadImage(withName name: String) -> UIImage? {
-//        let filename = getDocumentsDirectory().appendingPathComponent(name)
-//        return UIImage(contentsOfFile: filename.path)
-//    }
-//
-//    func getDocumentsDirectory() -> URL {
-//        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//    }
-//
-//    func downloadAndSaveImage(from url: URL, withName name: String, completion: @escaping (UIImage?) -> Void) {
-//        let cacheKey = url.absoluteString as NSString
-//        if let cachedImage = cache.object(forKey: cacheKey) {
-//            completion(cachedImage)
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            if let _ = error {
-//                completion(nil)
-//                return
-//            }
-//            
-//            guard let data = data, let image = UIImage(data: data) else {
-//                completion(nil)
-//                return
-//            }
-//            
-//            self.cache.setObject(image, forKey: cacheKey)
-//            self.saveImage(image, withName: name)
-//            completion(image)
-//        }.resume()
-//    }
     
     func getPopularMovies(completed: @escaping (Result<[DataMovie], APError>) -> Void) {
         guard let url = URL(string: "\(NetworkManager.popular)&language=en-US") else {

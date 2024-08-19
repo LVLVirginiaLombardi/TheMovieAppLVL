@@ -15,6 +15,7 @@ struct MovieDetailView: View {
     @State private var showTrailer = false
     
     let movie: DataMovie
+    @State private var isFavorite: Bool = false
     
     var body: some View {
         ScrollView {
@@ -58,9 +59,10 @@ struct MovieDetailView: View {
                         .font(.body)
                     
                     Button(action: {
-                        // Agregar a favoritos
+                        toggleFavorite()
                     }, label: {
-                        Image(systemName: "heart")
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
+                            .foregroundColor(isFavorite ? .red : .gray)
                     })
                 }
                 .padding(.horizontal, 16)
@@ -84,23 +86,32 @@ struct MovieDetailView: View {
             .sheet(isPresented: $showTrailer, content: {
                 EmptyView()
             })
-            .onAppear(perform: {
+            .onAppear {
                 viewModel.getTrailers(id: movie.id ?? 123)
-            })
+                isFavorite = FavoriteManager.shared.isFavorite(movie: movie)
+            }
             .padding(5)
         }
     }
+    
+    private func toggleFavorite() {
+        if isFavorite {
+            FavoriteManager.shared.deleteFavorite(movie: movie)
+        } else {
+            FavoriteManager.shared.saveFavorite(movie: movie)
+        }
+        isFavorite.toggle()
+    }
 }
-
 struct YTWrapper: UIViewRepresentable {
     var videoID: String
-    
+
     func makeUIView(context: Context) -> YTPlayerView {
         let playerView = YTPlayerView()
         playerView.load(withVideoId: videoID)
         return playerView
     }
-    
+
     func updateUIView(_ uiView: YTPlayerView, context: Context) {
     }
 }

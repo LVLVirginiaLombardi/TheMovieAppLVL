@@ -13,7 +13,7 @@ struct MovieDataModel: Codable {
     let total_pages: Int
 }
 
-struct DataMovie: Codable {
+struct DataMovie: Codable, Identifiable {
     let backdrop_path: String?
     let id: Int?
     let original_title: String?

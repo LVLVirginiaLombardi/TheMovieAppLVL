@@ -12,12 +12,17 @@ struct MainTabView: View {
         TabView {
             MoviesView()
                 .tabItem {
-                    Image(systemName: "play.rectangle")
+                    Image(systemName: "play.house")
                 }
             
             SearchMoviesView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
+                }
+            
+            FavoritesView()
+                .tabItem {
+                    Image(systemName: "suit.heart")
                 }
         }
     }
